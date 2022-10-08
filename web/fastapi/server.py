@@ -1,5 +1,6 @@
 from json import dumps as encode_json
 from flask import Flask, request
+from parser import add_link_to_csv
 
 app = Flask(__name__)
 
@@ -27,11 +28,10 @@ def sendData():
     link = data['link']
     roles = data['roles']
     
-    print(link)
-    print(roles)
+    # print(link)
+    # print(roles)
     
-    
-    # # Сюда срать для эмэля
+    add_link_to_csv(link, roles)
     
     return {'status': True}
 
