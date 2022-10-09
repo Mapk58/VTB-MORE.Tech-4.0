@@ -1,1 +1,12 @@
-
+pandas
+numpy
+sklearn
+torch
+transformers
+tqdm
+pickle
+nltk
+pymorphy2
+matplotlib
+pyTelegramBotApi
+telebot
