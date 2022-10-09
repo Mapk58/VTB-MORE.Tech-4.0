@@ -7,18 +7,17 @@ from transformers import MBartTokenizer, MBartForConditionalGeneration
 import pandas as pd
 import numpy as np
 
-
 class Summarizer:
-    def __init__(self) -> None:
+    def __init__(self):
         self.model_name = "IlyaGusev/mbart_ru_sum_gazeta"
         self.tokenizer = MBartTokenizer.from_pretrained(self.model_name)
         self.model = MBartForConditionalGeneration.from_pretrained(self.model_name)
     
     def __call__(self, article_texts):
-        if not isinstance(article_texts, list):
-            article_texts = [article_texts]
+        #if not isinstance(article_texts, list):
+        #    article_texts = [article_texts]
 
-        input_ids = self.tokenizer(article_texts, max_length=2000, truncation=True, return_tensors="pt",)["input_ids"]
+        input_ids = self.tokenizer([article_texts], max_length=600, truncation=True, return_tensors="pt",)["input_ids"]
 
         output_ids = self.model.generate(input_ids=input_ids, no_repeat_ngram_size=4)[0]
         summary = self.tokenizer.decode(output_ids, skip_special_tokens=True)
@@ -63,7 +62,7 @@ class PrModel(nn.Module):
         return self.classifier(embeddings)
 
 
-class Network:
+class Network():
     def __init__(self, task='industry') -> None:
         '''
         task может быть industry или profession
@@ -73,7 +72,7 @@ class Network:
         '''
         self.role2num = {
             'бухгалтер': 0,
-            'руководитель': 1
+            'генеральный директор': 1
         }
         self.idx2industry = {
         0: 'HR',
@@ -104,31 +103,37 @@ class Network:
         }
         self.industry2idx = {val: key for key, val in self.idx2industry.items()}
         
+        '''
         self.task = task
         if task == 'industry':
             self.model = IndModel()
-            self.model.load_state_dict(torch.load('IndModel.pth'))
+            self.model.load_state_dict(torch.load('VTB-MORE.Tech-4.0/models/moretech/IndModel.pth'))
         else:
             self.model = PrModel()
-            self.model.load_state_dict(torch.load('PrModel.pth'))
+            self.model.load_state_dict(torch.load('VTB-MORE.Tech-4.0/models/moretech/PrModel.pth'))
+        '''
         self.summarizer = Summarizer()
     
     def bot_api(self, role: str, industries: list):
         answer = []
 
         role = self.role2num[role.lower()]
-        industries = list(map(lambda x: self.industry2idx(x), industries))
+        industries = list(map(lambda x: self.industry2idx[x], industries))
 
-        role_df = pd.read_csv('profession_labeled.csv')
-        industry_df = pd.read_csv('industry_labeled.csv')
+        role_df = pd.read_csv('VTB-MORE.Tech-4.0/models/moretech/profession_labeled.csv')
+        industry_df = pd.read_csv('VTB-MORE.Tech-4.0/models/moretech/industry_labeled.csv')
 
         role_idx = set(role_df[role_df['label'] == role].index)
 
+        i = 0
         for industry in industries:
-            industry_idx = set(industry_df[industry_df['label'] == industry].index).intersection(role_idx)
-            answer += list(industry_idx)
-        
-        return self.summarizer(answer[:3])
+            try:
+                industry_idx = list(set(industry_df[industry_df['label'] == industry].index).intersection(role_idx))[0]
+            except:
+                industry_idx = 5
+        article_text = "Высота башни составляет 324 метра (1063 фута), примерно такая же высота, как у 81-этажного здания, и самое высокое сооружение в Париже. Его основание квадратно, размером 125 метров (410 футов) с любой стороны. Во время строительства Эйфелева башня превзошла монумент Вашингтона, став самым высоким искусственным сооружением в мире, и этот титул она удерживала в течение 41 года до завершения строительство здания Крайслер в Нью-Йорке в 1930 году. Это первое сооружение которое достигло высоты 300 метров. Из-за добавления вещательной антенны на вершине башни в 1957 году она сейчас выше здания Крайслер на 5,2 метра (17 футов). За исключением передатчиков, Эйфелева башня является второй самой высокой отдельно стоящей структурой во Франции после виадука Мийо."
+
+        return self.summarizer(article_text)
     
     def label_new_data(self, text):
         pass

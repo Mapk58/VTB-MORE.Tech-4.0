@@ -21,17 +21,17 @@ const mockData = [
       {
         subtitle:
           'Keanu Reeves Departs Martin Scorsese, Leonardo DiCaprio’s ‘Devil in the White City’ at Hulu',
-        author: 'Hollywood Reporter',
+        author: '',
       },
       {
         subtitle:
           'Keanu Reeves Departs Martin Scorsese, Leonardo DiCaprio’s ‘Devil in the White City’ at Hulu',
-        author: 'Hollywood Reporter',
+        author: '',
       },
       {
         subtitle:
           'Keanu Reeves Departs Martin Scorsese, Leonardo DiCaprio’s ‘Devil in the White City’ at Hulu',
-        author: 'Hollywood Reporter',
+        author: '',
       },
     ],
   },
@@ -41,37 +41,17 @@ const mockData = [
       {
         subtitle:
           'Keanu Reeves Departs Martin Scorsese, Leonardo DiCaprio’s ‘Devil in the White City’ at Hulu',
-        author: 'Hollywood Reporter',
+        author: '',
       },
       {
         subtitle:
           'Keanu Reeves Departs Martin Scorsese, Leonardo DiCaprio’s ‘Devil in the White City’ at Hulu',
-        author: 'Hollywood Reporter',
+        author: '',
       },
       {
         subtitle:
           'Keanu Reeves Departs Martin Scorsese, Leonardo DiCaprio’s ‘Devil in the White City’ at Hulu',
-        author: 'Hollywood Reporter',
-      },
-    ],
-  },
-  {
-    title: 'Тренды: Кто я...',
-    items: [
-      {
-        subtitle:
-          'Keanu Reeves Departs Martin Scorsese, Leonardo DiCaprio’s ‘Devil in the White City’ at Hulu',
-        author: 'Hollywood Reporter',
-      },
-      {
-        subtitle:
-          'Keanu Reeves Departs Martin Scorsese, Leonardo DiCaprio’s ‘Devil in the White City’ at Hulu',
-        author: 'Hollywood Reporter',
-      },
-      {
-        subtitle:
-          'Keanu Reeves Departs Martin Scorsese, Leonardo DiCaprio’s ‘Devil in the White City’ at Hulu',
-        author: 'Hollywood Reporter',
+        author: '',
       },
     ],
   },
@@ -81,17 +61,37 @@ const mockData = [
       {
         subtitle:
           'Keanu Reeves Departs Martin Scorsese, Leonardo DiCaprio’s ‘Devil in the White City’ at Hulu',
-        author: 'Hollywood Reporter',
+        author: '',
       },
       {
         subtitle:
           'Keanu Reeves Departs Martin Scorsese, Leonardo DiCaprio’s ‘Devil in the White City’ at Hulu',
-        author: 'Hollywood Reporter',
+        author: '',
       },
       {
         subtitle:
           'Keanu Reeves Departs Martin Scorsese, Leonardo DiCaprio’s ‘Devil in the White City’ at Hulu',
-        author: 'Hollywood Reporter',
+        author: '',
+      },
+    ],
+  },
+  {
+    title: 'Тренды: Кто я...',
+    items: [
+      {
+        subtitle:
+          'Keanu Reeves Departs Martin Scorsese, Leonardo DiCaprio’s ‘Devil in the White City’ at Hulu',
+        author: '',
+      },
+      {
+        subtitle:
+          'Keanu Reeves Departs Martin Scorsese, Leonardo DiCaprio’s ‘Devil in the White City’ at Hulu',
+        author: '',
+      },
+      {
+        subtitle:
+          'Keanu Reeves Departs Martin Scorsese, Leonardo DiCaprio’s ‘Devil in the White City’ at Hulu',
+        author: '',
       },
     ],
   },
