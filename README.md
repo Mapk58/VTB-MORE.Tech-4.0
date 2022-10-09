@@ -18,6 +18,7 @@ nltk
 pymorphy2
 matplotlib
 pyTelegramBotApi
+telebot
 
 ## Запуск проекта
 
