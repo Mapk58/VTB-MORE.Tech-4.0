@@ -8,4 +8,4 @@ nltk
 pymorphy2
 matplotlib
 pyTelegramBotApi
-telebot
+beautifulsoup
