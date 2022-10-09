@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from datetime import datetime, time
 import telebot
 from telebot import types
